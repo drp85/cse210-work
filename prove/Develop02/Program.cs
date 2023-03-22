@@ -51,7 +51,7 @@ class Program
                             string prompt = portions[0];
                             string response = portions[1];
                             Entry entry = new Entry(prompt, response);
-                            journal.Entries.Add(entry);
+                            journal.entries.Add(entry);
                         }
                     }
                 }
@@ -64,9 +64,9 @@ class Program
                 string filename = Console.ReadLine();
                 using (StreamWriter sw = new StreamWriter(filename))
                 {
-                    foreach (Entry entry in journal.Entries)
+                    foreach (Entry entry in journal.entries)
                     {
-                        sw.WriteLine($"{entry.GetDate}|||{entry.GetPrompt}|||{entry.GetResponse}<>");  
+                        sw.WriteLine($"{entry.GetDate()}|||{entry.GetPrompt()}|||{entry.GetResponse()}<>");  
                     }
                 }
             }
