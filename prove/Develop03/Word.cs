@@ -12,6 +12,7 @@ public class Word
 
     public void indexWords(string content)
     {
+        wordIndex = new List<string>();
         string[] words = content.Split(' ');
 
         foreach(string word in words)
@@ -22,5 +23,10 @@ public class Word
     public int getLength()
     {
         return wordIndex.Count;
+    }
+
+    public List<string> getWords()
+    {
+        return wordIndex;
     }
 }

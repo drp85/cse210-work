@@ -16,6 +16,8 @@ class Program
         Console.Clear();
         Console.WriteLine($"{scripture.asString()}");
 
+        Word word = new Word();
+        word.indexWords(scripture.getText());
 
         bool repeat = true;
         while (repeat)
@@ -31,9 +33,6 @@ class Program
             {
                 Console.Clear();
                 
-                Word word = new Word();
-                word.indexWords(scripture.getText());
-
                 scripture.scriptureMemorize(word);
                 
 

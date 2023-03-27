@@ -25,14 +25,30 @@ public class Scripture
     public void scriptureMemorize(Word word)
     {
 
-        int numWordsToHide = word.getLength() / 20;
+        int numWordsToHide = word.getLength() / 12;
         Random random = new Random();
+
+        int total = word.getLength();
+        
         
         for (int i = 0; i < numWordsToHide; i++)
         {
-            //need to make random word hider and maintain hidden words and display words
+            int num = random.Next(total);
+            if (word.getWords()[num] != "___")
+            {
+            word.getWords()[num] = "___";
+            }
+            else
+            {
+                numWordsToHide += 1;
+            }
         
         }
+        string reconstructed = "";
+        for (int j = 0; j < total; j++)
+        reconstructed += $" {word.getWords()[j]}";
+        word.indexWords(reconstructed);
+        Console.WriteLine(reconstructed);
     }
 
     public string asString()
