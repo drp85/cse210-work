@@ -46,9 +46,11 @@ public class Scripture
         }
         string reconstructed = "";
         for (int j = 0; j < total; j++)
+        {
         reconstructed += $" {word.getWords()[j]}";
         word.indexWords(reconstructed);
         Console.WriteLine(reconstructed);
+        }
     }
 
     public string asString()
