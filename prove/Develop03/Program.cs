@@ -1,22 +1,26 @@
 using System;
-
 class Program
 {
     static void Main(string[] args)
     {
         
-        Scripture ActiveScripture = Scripture.UserInput();
+        Reference references = new Reference();
+        
+        Console.Clear();
+        Console.WriteLine("Please select the verse you want to memorize:\n");
+        references.displayReferences();
+
+        int response = Int16.Parse(Console.ReadLine());
+        Scripture scripture = references.getScripture(response);
 
         Console.Clear();
-        ActiveScripture.VerseAndText();
+        Console.WriteLine($"{scripture.asString()}");
+
 
         bool repeat = true;
         while (repeat)
         {
-            Console.Clear();
-
             Console.WriteLine("\nPress enter to hide a few words or type 'quit' to exit.");
-
             string input = Console.ReadLine();
 
             if (input == "quit")
@@ -25,17 +29,14 @@ class Program
             }
             else
             {
-                int numWordsToHide = Word.scriptureTotal / 20;
-                Random random = new Random();
-                
-                for (int i = 0; i < numWordsToHide; i++)
-                {
-                    int randomIndex = random.Next(Word.scriptureTotal);
-                    ActiveScripture._text = ActiveScripture._text.Replace(Word.wordIndex[randomIndex], new string('_', Word.wordIndex[randomIndex].Length));
-                }
-
                 Console.Clear();
-                ActiveScripture.VerseAndText();
+                
+                Word word = new Word();
+                word.indexWords(scripture.getText());
+
+                scripture.scriptureMemorize(word);
+                
+
             }
         }
     }

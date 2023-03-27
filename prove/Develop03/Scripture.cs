@@ -3,46 +3,46 @@ using System.Text.RegularExpressions;
 
 public class Scripture
 {
-    public string _verse { get; set; }
-    public string _text { get; set;}
+    private string verse;
+    private List<string> text;
 
-    public Scripture(string verse, string text)
+    public Scripture(string verse, List<string> text)
     {
-        verse = _verse;
-        text = _text;
+        this.verse = verse;
+        this.text = text;
     }
 
-    public static Scripture UserInput(Scripture neph1_1, Scripture neph11_16_17)
+    public string getVerse()
     {
-        Console.WriteLine("Please select the verse you want to memorize:\n");
-        Console.WriteLine("1. 1 Nephi 1:1\n");
-        Console.WriteLine("2. 1 Nephi 11:16-17\n");
-
-        int activeScripture = Console.Read();
-        
-        switch (activeScripture)
-        {   
-            case '1':
-                return neph1_1;
-            case '2':
-                return neph11_16_17;
-            default:
-                Console.WriteLine("Invalid Selection.");
-                return null;    
-        }
+        return verse;
+    }
+    
+    public string getText()
+    {
+        return string.Join(" ", text);
     }
 
-    public void VerseAndText()
+    public void scriptureMemorize(Word word)
     {
-        Console.WriteLine($"{_verse}\n");
+
+        int numWordsToHide = word.getLength() / 20;
+        Random random = new Random();
         
-        string pattern = @"^\d+\.\s+";
-        string[] parts = Regex.Split(_text, pattern, RegexOptions.Multiline);
-        
-        foreach (string part in parts)
+        for (int i = 0; i < numWordsToHide; i++)
         {
-            Console.WriteLine(part);
-        }
+            //need to make random word hider and maintain hidden words and display words
         
+        }
+    }
+
+    public string asString()
+    {
+        string result = verse;
+        
+        foreach (string part in text)
+        {
+            result += $"\n{part}";
+        }
+        return result;
     }
 }

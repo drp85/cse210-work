@@ -3,19 +3,24 @@ using System.Collections.Generic;
 
 public class Word
 {
-    public static Dictionary<int, string> wordIndex = new Dictionary<int, string>();
+    private List<string> wordIndex;
 
-    public static int scriptureTotal { get; set; }
+    public Word()
+    {
+        wordIndex = new List<string>();
+    }
 
-    public static void IndexWords(string content)
+    public void indexWords(string content)
     {
         string[] words = content.Split(' ');
 
-        for (int i = 0; i < words.Length; i++)
+        foreach(string word in words)
         {
-            wordIndex.Add(i, words[i]);
+            wordIndex.Add(word);
         }
-
-        scriptureTotal = words.Length;
+    }
+    public int getLength()
+    {
+        return wordIndex.Count;
     }
 }
