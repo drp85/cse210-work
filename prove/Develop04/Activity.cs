@@ -36,10 +36,6 @@ public class Activity
             ListingActivity list = new ListingActivity();
             list.run();
             break;
-
-            case 4:
-            bool repeat = false;
-            break;
             
             default:
             Console.Clear();
