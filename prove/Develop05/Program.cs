@@ -1,9 +1,24 @@
-using System;
+﻿using System;
+using System.Collections.Generic;
 
-class Program
+namespace GoalSetter
 {
-    static void Main(string[] args)
+    public class Program
     {
-        Console.WriteLine("Hello Develop05 World!");
+        public static void Main(string[] args)
+        {
+            Repository repository = new InMemRepository();
+            Terminal terminal = new Terminal();
+            
+            CommandFactory factory = new CommandFactory(repository, terminal);
+            Commands commands = factory.CreateCommands();
+            
+            commands.Get("").Execute();
+            while (true)
+            {
+                string name = terminal.ReadString("> ");
+                commands.Get(name).Execute();     
+            }
+        }
     }
 }
