@@ -37,13 +37,9 @@ public class Scripture
             if (word.getWords()[num] != "___")
             {
             word.getWords()[num] = "___";
-            }
-            else
-            {
-                numWordsToHide += 1;
-            }
-        
+            }  
         }
+
         string reconstructed = "";
         for (int j = 0; j < total; j++)
         reconstructed += $" {word.getWords()[j]}";
